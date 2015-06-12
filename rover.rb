@@ -1,51 +1,86 @@
-class rover
-  attr_reader :x, :y, :direction
+class Rover
+
+attr_accessor :x, :y, :direction
 
   def initialize (x, y, direction)
-    @x, @y, @direction = x, y, direction
+    @x = x
+    @y = y
+    @direction = direction
   end
 
-  def move
-    case @direction
-    if @direction "N"
-      @y += 1
 
-    when "N'"
-      @y +=1
-    when "S"
-
-
-  def read_instruction (i)
   def to_s
-    "Rover: #{x}, #{y} facing #{direction}"
+    "(#{@x}, #{@y}, #{@direction})"
+  end
 
 
-r = rover.new
-puts r.to_s
-r.move
-puts r
-r.y
-
-r.read_instruction("m")
-
-input.each_char do |c|
-
-
-
-def read_instructions
-  case i
+  def read_instructions(i)
+    case i
     when "M"
       move
     when "L"
-    turn left
-  when "R"
-    turn right
-  else
-
-  end
-
-  else
-
-  end
+      turn_left
+    when "R"
+      turn_right
+    end
   puts self
+  end
+
+  def turn_left
+
+  end
+
+  def turn_right
+
+  end
+
+  def move(direction)
+    if @direction == "N"
+      @y = @y + 1
+    elsif @direction == "E"
+      @x = @x + 1
+    elsif @direction == "S"
+      @y = @y - 1
+    elsif @direction == "W"
+      @x = @x - 1
+    else
+    end
+  end
+
 end
+
+
+
+# N = (1, 0, 0, 0)
+# E = (0, 1, 0, 0)
+# S = (0, 0, 1, 0)
+# W = (0, 0, 0, 1)
+
+
+
+rover1 = Rover.new(1, 2, "N")
+
+
+rover2 = Rover.new(1, 2, "N")
+
+rover1.move("N")
+rover1.move("E")
+
+puts rover1
+
+
+
+
+
+
+
+
+
+
+
+# what is the purpose of to_s
+# how come it doesn't add
+# how to make circle at the top
+
+
+

@@ -14,15 +14,16 @@ class Point
     "(#{@x}, #{@y})"
   end
 
-  def add(point) #+(point )
+
+def add(point) #+(point )
     Point.new(@x + point.x, @y +point.y)
   end
 
 end
 
-point = Point.new(1, 2)
+point = Point.new
 
-puts point
+puts point.to_s
 
 puts point.x
 
@@ -40,7 +41,6 @@ p1 = Point.new(1, 2)
 p2 = Point.new(3, 4)
 
 p4 = p1.add(p2)
-
 
 
 
