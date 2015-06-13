@@ -1,20 +1,60 @@
 class Rover
 
-attr_accessor :x, :y, :direction
+  attr_reader :x, :y, :direction
 
-  def initialize (x, y, direction)
+  def initialize (x, y, direction, name)
     @x = x
     @y = y
     @direction = direction
+    @name = name
   end
 
-
-  def to_s
-    "(#{@x}, #{@y}, #{@direction})"
+  def move
+    case @direction
+      when "N"
+        @y += 1
+      when "E"
+        @x += 1
+      when "S"
+        @y -= 1
+      when "W"
+        @x -= 1
+    end
   end
 
+  def turn_left
+    case @direction
+      when "N"
+        @direction = "W"
+      when "E"
+        @direction = "N"
+      when "S"
+        @direction = "E"
+      when "W"
+        @direction = "S"
+    end
+  end
 
-  def read_instructions(i)
+  def turn_right
+    case @direction
+      when "N"
+        @direction = "E"
+      when "E"
+        @direction = "S"
+      when "S"
+        @direction = "W"
+      when "W"
+        @direction = "N"
+    end
+  end
+
+  def run_exercise(input)
+    input.each_char do |x|
+      read_instruction(x)
+    end
+  end
+
+  def read_instruction(i)
     case i
     when "M"
       move
@@ -23,64 +63,27 @@ attr_accessor :x, :y, :direction
     when "R"
       turn_right
     end
-  puts self
   end
 
-  def turn_left
 
+  def to_s                                #Not sure on why I have to do this, ask Monday
+    "#{x}, #{y}, #{direction}"
   end
 
-  def turn_right
-
+  def start_exercise
+    puts "Please input commands for #{name}"
+    commands = gets.chomp.upcase
+    run_exercise(commands)
+    puts "The final destination for #{name} is #{to_s}"
   end
 
-  def move(direction)
-    if @direction == "N"
-      @y = @y + 1
-    elsif @direction == "E"
-      @x = @x + 1
-    elsif @direction == "S"
-      @y = @y - 1
-    elsif @direction == "W"
-      @x = @x - 1
-    else
-    end
-  end
 
 end
 
 
+r1 = Rover.new(1, 2, "N", "Rover 1")
+r2 = Rover.new(3, 3, "E", "Rover 2")
 
-# N = (1, 0, 0, 0)
-# E = (0, 1, 0, 0)
-# S = (0, 0, 1, 0)
-# W = (0, 0, 0, 1)
-
-
-
-rover1 = Rover.new(1, 2, "N")
-
-
-rover2 = Rover.new(1, 2, "N")
-
-rover1.move("N")
-rover1.move("E")
-
-puts rover1
-
-
-
-
-
-
-
-
-
-
-
-# what is the purpose of to_s
-# how come it doesn't add
-# how to make circle at the top
-
-
+r1.start_exercise
+r2.start_exercise
 
